@@ -1,17 +1,19 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
-const dotenv = require('dotenv')
-dotenv.config()
-require('dotenv').config()
+// Load env variables
+dotenv.config();
 
+const app = express();
 
-const app = express()
-const port = process.env.PORT || 3000
+// Use environment port for Render (IMPORTANT!)
+const port = process.env.PORT || 3000;
 
-require('./db') // connects to MongoDB
+// Connect to MongoDB
+require('./db');
 
-// CORS
+// CORS Configuration
 app.use(cors({
   origin: [
     'https://v0-spiritual-multi-deity-blog.vercel.app',
@@ -20,12 +22,18 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(express.json())
-app.use(express.urlencoded({ extended: true }))
+// Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const router = require('./Routes/router')
-app.use('/', router)
+// Routes
+const router = require('./Routes/router');
+app.use('/', router);
 
-app.get('/', (req, res) => res.send('Backend Working 🔥'))
+// Test route
+app.get('/', (req, res) => res.send('Backend Working 🔥'));
 
-app.listen(port, () => console.log(`Server running on port ${port}`))
+// Start server
+app.listen(port, () => {
+  console.log(`✅ Server is running on port ${port}`);
+});

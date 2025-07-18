@@ -20,5 +20,5 @@ router.get('/blogs', getBlogs);
 router.get('/blogs/:id', getBlogById);
 router.put('/blogs/:id', updateBlog);
 router.delete('/blogs/:id', deleteBlog);
-
+  
 module.exports = router;
