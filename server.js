@@ -16,8 +16,8 @@ require('./db');
 // CORS Configuration
 app.use(cors({
   origin: [
-    'https://v0-spiritual-multi-deity-blog.vercel.app',
-    'https://v0-spiritual-admin-panel.vercel.app'
+     'https://spiritualblog.vercel.app',
+    'https://adminyourdomain.vercel.app'
   ],
   credentials: true
 }));
